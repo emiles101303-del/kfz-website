@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KFZ Meisterbetrieb – Podcast & Service</title>
+  <meta name="description" content="KFZ Website im Werkstatt-Look. Höre unseren Podcast – Button im Spotify-Style führt direkt zur Datei." />
+  <meta property="og:title" content="KFZ Meisterbetrieb – Podcast & Service" />
+  <meta property="og:description" content="KFZ Website im Werkstatt-Look. Höre unseren Podcast – Button im Spotify-Style führt direkt zur Datei." />
+  <meta property="og:type" content="website" />
+  <style>
+    :root{
+      --bg:#0c0d0f; --panel:#14161a; --text:#e9ecf1; --muted:#b6bcc6;
+      --accent:#ffd000; --accent2:#ffb300; --ok:#1db954; /* Spotify-Grün */
+      --border:#262a31;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif;
+      color:var(--text); background:var(--bg);
+    }
+    header{
+      position:relative; overflow:hidden; background:linear-gradient(180deg,#111318 0%, #0c0d0f 100%);
+      border-bottom:1px solid var(--border);
+    }
+    .nav{
+      max-width:1100px; margin:0 auto; padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between;
+    }
+    .brand{display:flex; gap:.75rem; align-items:center; font-weight:700; letter-spacing:.3px}
+    .badge{
+      background:linear-gradient(90deg,var(--accent),var(--accent2));
+      color:#1a1a1a; font-weight:800; padding:.25rem .5rem; border-radius:.5rem; font-size:.8rem;
+      text-transform:uppercase;
+    }
+    .hero{
+      max-width:1100px; margin:0 auto; padding:3rem 1.25rem 2rem; display:grid; gap:2rem;
+      grid-template-columns:1.1fr .9fr;
+    }
+    @media (max-width:900px){ .hero{ grid-template-columns:1fr; } }
+    .hero h1{ font-size:clamp(2rem,4vw,3rem); margin:.5rem 0 1rem; line-height:1.1 }
+    .hero p{ color:var(--muted); margin:0 0 1rem }
+    .hazard{
+      display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .6rem; border-radius:.5rem;
+      background:repeating-linear-gradient(45deg, #2a2f36, #2a2f36 10px, #1b1f24 10px, #1b1f24 20px);
+      border:1px solid var(--border); font-size:.85rem; color:#e9ecf1;
+    }
+    .cta-row{ display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem }
+    .btn{
+      display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.1rem; border-radius:.8rem;
+      text-decoration:none; color:#0b0e0f; font-weight:700; border:0; cursor:pointer;
+      transition:transform .06s ease, box-shadow .2s ease; user-select:none;
+    }
+    .btn:hover{ transform:translateY(-1px) }
+    .btn:active{ transform:translateY(0) }
+    .btn-spotify{ background:var(--ok); color:#000 }
+    .btn-ghost{ background:transparent; color:var(--text); border:1px solid var(--border) }
+    .panel{
+      background:var(--panel); border:1px solid var(--border); border-radius:1rem; padding:1rem;
+      box-shadow:0 6px 20px rgba(0,0,0,.2);
+    }
+    .media{ display:flex; gap:1rem; align-items:center; }
+    .media img{ width:100%; border-radius:.8rem; border:1px solid var(--border); display:block; }
+    .list{ max-width:1100px; margin:2rem auto; padding:0 1.25rem; display:grid; gap:1rem; grid-template-columns:repeat(3,1fr) }
+    @media (max-width:900px){ .list{ grid-template-columns:1fr; } }
+    .card{ background:var(--panel); border:1px solid var(--border); border-radius:1rem; padding:1rem }
+    .card h3{ margin:.2rem 0 .4rem }
+    footer{
+      border-top:1px solid var(--border); margin-top:2rem; padding:1.5rem 1.25rem; color:var(--muted); text-align:center;
+    }
+    .spotify-icon{
+      width:20px; height:20px; display:inline-block;
+    }
+    audio{ width:100%; margin-top:.75rem }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <!-- kleines „K Zahnrad/Schraubenschlüssel“ Icon -->
+        <span class="badge">KFZ</span>
+        <span>Meisterbetrieb</span>
+      </div>
+      <span class="hazard">⚠️ Werkstatt geprüft</span>
+    </div>
+
+    <section class="hero">
+      <div>
+        <span class="hazard">KFZ • Tuning • Service</span>
+        <h1>Starker Auftritt auf der Straße.<br/>Starker Sound im Ohr.</h1>
+        <p>Willkommen in unserer KFZ-Werkstatt. Neu: Unser Werkstatt-Podcast – ehrliche Einblicke, Tools, Tuning &amp; Spaß. Der Button sieht aus wie Spotify, führt aber direkt zu unserer MP3-Datei.</p>
+        <div class="cta-row">
+          <!-- WICHTIG: HREF zeigt auf DEINE Datei -->
+          <a class="btn btn-spotify" href="assets/podcast.mp3" target="_blank" rel="noopener">
+            <!-- Spotify-Logo (SVG) -->
+            <svg class="spotify-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 6.64 5.37 12 12 12s12-5.36 12-12C24 5.37 18.63 0 12 0zm5.5 17.3c-.2.33-.63.44-.96.24-2.64-1.61-5.96-1.98-9.88-1.13-.38.08-.76-.16-.84-.54-.08-.38.16-.76.54-.84 4.22-.92 7.9-.5 10.78 1.27.33.2.44.63.24.96zm1.37-3.08c-.25.41-.79.54-1.2.29-3.02-1.84-7.63-2.38-11.2-1.35-.46.12-.94-.15-1.06-.61-.12-.46.15-.94.61-1.06 4.05-1.07 9.07-.47 12.52 1.61.41.25.54.79.29 1.2zm.12-3.22c-3.59-2.13-9.56-2.33-13.01-1.35-.55.16-1.12-.16-1.28-.71-.16-.55.16-1.12.71-1.28 3.96-1.13 10.57-.89 14.69 1.56.5.3.66.95.36 1.45-.3.5-.95.66-1.45.36z"/>
+            </svg>
+            Auf Spotify anhören
+          </a>
+          <a class="btn btn-ghost" href="#podcast">Direkt im Browser abspielen</a>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="media">
+          <!-- Optionales Bild: assets/hero.jpg -->
+          <img src="assets/hero.jpg" alt="KFZ Werkstatt" onerror="this.style.display='none'">
+        </div>
+        <div id="podcast" style="margin-top:.75rem">
+          <strong>Podcast: Folge 1 – Start in der Werkstatt</strong>
+          <p class="muted" style="color:var(--muted); margin:.35rem 0 0">Tipps, Trends & ehrliche Schrauberstories.</p>
+          <!-- Eingebauter Player: zeigt ebenfalls auf die Datei -->
+          <audio controls preload="metadata">
+            <source src="assets/podcast.mp3" type="audio/mpeg" />
+            Dein Browser unterstützt das Audio-Element nicht.
+          </audio>
+          <div style="margin-top:.5rem">
+            <a href="assets/podcast.mp3" download class="hazard" style="text-decoration:none">⬇︎ Datei herunterladen</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="list">
+      <article class="card">
+        <h3>Inspektion &amp; Service</h3>
+        <p>Wartung nach Herstellervorgaben, Bremsen, Ölwechsel, HU-Vorbereitung.</p>
+      </article>
+      <article class="card">
+        <h3>Diagnose &amp; Elektrik</h3>
+        <p>Moderne Fehlersuche, Software-Updates, Batterie-Check.</p>
+      </article>
+      <article class="card">
+        <h3>Tuning &amp; Performance</h3>
+        <p>Fahrwerk, Abgasanlage, Felgen – legal &amp; eingetragen.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="y"></span> KFZ Meisterbetrieb – Alle Rechte vorbehalten.
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
