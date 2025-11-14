@@ -14,22 +14,14 @@
     body{margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,Arial,sans-serif; color:var(--text); background:var(--bg)}
     header{background:linear-gradient(180deg,#111318 0%, #0c0d0f 100%); border-bottom:1px solid var(--border)}
     .nav{max-width:1100px; margin:0 auto; padding:1rem 1.25rem; display:flex; align-items:center; justify-content:space-between}
-    .brand{display:flex; gap:.75rem; align-items:center; font-weight:700; letter-spacing:.3px}
-    .badge{background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#1a1a1a; font-weight:800; padding:.25rem .5rem; border-radius:.5rem; font-size:.8rem; text-transform:uppercase}
+    .brand{display:flex; gap:.75rem; align-items:center; font-weight:700}
+    .badge{background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#1a1a1a; padding:.25rem .5rem; border-radius:.5rem; font-size:.8rem}
     .hero{max-width:1100px; margin:0 auto; padding:3rem 1.25rem 2rem; display:grid; gap:2rem; grid-template-columns:1.1fr .9fr}
     @media (max-width:900px){.hero{grid-template-columns:1fr}}
-    .hero h1{font-size:clamp(2rem,4vw,3rem); margin:.5rem 0 1rem; line-height:1.1}
-    .hero p{color:var(--muted); margin:0 0 1rem}
-    .hazard{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .6rem; border-radius:.5rem; background:repeating-linear-gradient(45deg,#2a2f36,#2a2f36 10px,#1b1f24 10px,#1b1f24 20px); border:1px solid var(--border); font-size:.85rem; color:#e9ecf1}
-    .cta-row{display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1rem}
-    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.85rem 1.1rem; border-radius:.8rem; text-decoration:none; color:#0b0e0f; font-weight:700; border:0; cursor:pointer; transition:transform .06s ease, box-shadow .2s ease; user-select:none}
+    .panel{background:var(--panel); border:1px solid var(--border); border-radius:1rem; padding:1rem}
+    .media img{width:100%; border-radius:.8rem; border:1px solid var(--border)}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.85rem 1.1rem; border-radius:.8rem; text-decoration:none; font-weight:700; cursor:pointer}
     .btn-spotify{background:var(--ok); color:#000}
-    .btn-ghost{background:transparent; color:var(--text); border:1px solid var(--border)}
-    .panel{background:var(--panel); border:1px solid var(--border); border-radius:1rem; padding:1rem; box-shadow:0 6px 20px rgba(0,0,0,.2)}
-    .media img{width:100%; border-radius:.8rem; border:1px solid var(--border); display:block}
-
-    /* PLAYER sichtbar machen */
-    #playerWrap{margin-top:1rem;}
     audio{width:100%;}
   </style>
 </head>
@@ -42,70 +34,74 @@
       <span class="badge">AUTO</span>
       <span>Workshop</span>
     </div>
-    <span class="hazard">⚠️ Workshop Approved</span>
+    <span style="color:#b6bcc6;">⚠️ Workshop Approved</span>
   </div>
 
   <section class="hero">
-    <div>
-      <span class="hazard">Auto • Tuning • Service</span>
-      <h1>Strong presence on the road.<br/>Powerful sound in your ears.</h1>
-      <p>Workshop podcast – real insights, tools, tuning & fun.</p>
 
-      <div class="cta-row">
-        <a id="playBtn" class="btn btn-spotify" href="#" data-src="assets/KFZ.mp3">
-          ▶ Listen to Podcast
-        </a>
-        <a class="btn btn-ghost" href="#podcast">Show info</a>
-      </div>
+    <!-- LEFT SIDE -->
+    <div>
+      <span style="background:#222; padding:.3rem .5rem; border-radius:.4rem;">Auto • Tuning • Service</span>
+      <h1>Strong presence on the road.<br/>Powerful sound in your ears.</h1>
+      <p style="color:#b6bcc6;">Workshop podcast – real insights, tools, tuning & fun.</p>
+
+      <!-- PLAY BUTTON -->
+      <a id="playBtn" class="btn btn-spotify" href="#">
+        ▶ Play Podcast
+      </a>
     </div>
 
+    <!-- RIGHT SIDE -->
     <div class="panel">
+
+      <!-- IMAGE -->
       <div class="media">
         <img src="assets/hero.jpg" alt="Auto workshop">
       </div>
 
-      <!-- PLAYER sichtbar -->
-      <div id="playerWrap">
-        <strong>Podcast Episode 1</strong>
+      <!-- PLAYER -->
+      <div id="playerWrap" style="display:none; margin-top:1rem;">
+        <strong>Podcast – Episode 1</strong>
         <audio id="player" controls preload="none"></audio>
-        <div style="margin-top:.5rem">
-          <a id="downloadLink" href="assets/KFZ.mp3" download class="hazard" style="text-decoration:none">⬇ Download file</a>
+
+        <div style="margin-top:.5rem;">
+          <a id="downloadLink" href="assets/KFZ.mp3" download style="color:#ffd000; text-decoration:none;">
+            ⬇ Download MP3
+          </a>
         </div>
       </div>
 
     </div>
+
   </section>
 </header>
 
-<footer>
+<footer style="text-align:center; padding:1rem; margin-top:2rem; color:#b6bcc6;">
   © <span id="y"></span> Auto Workshop – All rights reserved.
 </footer>
 
 
 <!-- SCRIPT -->
 <script>
-(function(){
-  var y = document.getElementById('y');
-  if (y) y.textContent = new Date().getFullYear();
-})();
+document.getElementById("y").textContent = new Date().getFullYear();
 
-const btn  = document.getElementById('playBtn');
-const audio = document.getElementById('player');
-const dl    = document.getElementById('downloadLink');
+const btn    = document.getElementById("playBtn");
+const wrap   = document.getElementById("playerWrap");
+const audio  = document.getElementById("player");
+const dl     = document.getElementById("downloadLink");
 
-btn.addEventListener('click', function(e){
-    e.preventDefault();
+btn.addEventListener("click", function(e){
+  e.preventDefault();
 
-    const src = btn.dataset.src;
+  audio.src = "assets/KFZ.mp3";
+  dl.href   = "assets/KFZ.mp3";
 
-    if (audio.getAttribute('src') !== src) {
-        audio.setAttribute('src', src);
-        dl.setAttribute('href', src);
-    }
-
-    audio.play().catch(()=>{});
+  wrap.style.display = "block";
+  audio.play().catch(()=>{});
 });
 </script>
 
 </body>
 </html>
+
+
